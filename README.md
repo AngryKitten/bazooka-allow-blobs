@@ -1,6 +1,8 @@
 # Babs
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
+If you do not have Angular CLI installed globally on your machine yet, do so by running `npm install -g @Angular/cli`. To verify it has been installed correctly, run `ng -v` and you should see a version splash.
+When the project is initially cloned or package.json has been updated, run `npm install` to keep your node_modules up to date.
 
 ## Development server
 
@@ -8,7 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`. You can shorthand these commands by only using the first letter of each word `ng g c component-name`.
 
 ## Build
 

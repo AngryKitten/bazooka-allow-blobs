@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'plot-generic',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./generic.component.scss']
 })
 export class GenericComponent implements OnInit {
+  @Input() width;
 
   ngOnInit() {
   }

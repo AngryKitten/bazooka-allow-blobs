@@ -14,8 +14,8 @@ export class PlotterComponent implements OnInit {
   constructor(private randomizerService: RandomizerService) { }
 
   ngOnInit() {
-    this.numPlots = this.randomizerService.getRandomNum(1, 6);
-
+    this.numPlots = this.randomizerService.getRandomNum(1, 100);
+    console.log(this.numPlots);
   }
 
 }

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  stripes: number[] = [0, 0, 0];
+  stripes: number[] = [0, 0, 0, 0, 0, 0];
 
   onScroll() {
     this.stripes.push(0);

@@ -19,18 +19,20 @@ export class StaticComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.moneyVal = this.randomizerService.getRandomNum(1 /*statService.getMin*/, 5 /*statService.getMax*/);
+    const minVal = 1;
+    const maxVal = 5;
     switch (this.modifier) {
       case 'x0':
         this.moneyVal = 0;
         this.message = `Tears. +$0`;
         break;
       case 'x1':
+        this.moneyVal = this.randomizerService.getRandomNum(minVal, maxVal);
         this.message = `Payday! +$${this.moneyVal}`;
         break;
       case 'x2':
-        this.moneyVal = this.moneyVal * 2;
-        this.message = `Bankin'!! + $${this.moneyVal}`;
+        this.moneyVal = this.randomizerService.getRandomNum(maxVal, maxVal * 2);
+        this.message = `BONUS!! +$${this.moneyVal}`;
         break;
     }
   }

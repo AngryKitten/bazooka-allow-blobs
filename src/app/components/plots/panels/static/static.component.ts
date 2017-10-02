@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { RandomizerService } from '../../../../services/randomizer/randomizer.service';
 
@@ -9,8 +9,10 @@ import { RandomizerService } from '../../../../services/randomizer/randomizer.se
   providers: [RandomizerService]
 })
 export class StaticComponent implements OnInit {
+  @Input() modifier;
   moneyVal: number;
   gotMoney = false;
+  message: string;
 
   constructor(public toastr: ToastsManager, vcr: ViewContainerRef, private randomizerService: RandomizerService) {
     this.toastr.setRootViewContainerRef(vcr);
@@ -18,6 +20,19 @@ export class StaticComponent implements OnInit {
 
   ngOnInit() {
     this.moneyVal = this.randomizerService.getRandomNum(1 /*statService.getMin*/, 5 /*statService.getMax*/);
+    switch (this.modifier) {
+      case 'x0':
+        this.moneyVal = 0;
+        this.message = `Tears. +$0`;
+        break;
+      case 'x1':
+        this.message = `Payday! +$${this.moneyVal}`;
+        break;
+      case 'x2':
+        this.moneyVal = this.moneyVal * 2;
+        this.message = `Bankin'!! + $${this.moneyVal}`;
+        break;
+    }
   }
 
   getMoney() {
@@ -30,7 +45,7 @@ export class StaticComponent implements OnInit {
       currMoney = this.moneyVal;
       localStorage.setItem('money', JSON.stringify(this.moneyVal));
     }
-    this.toastr.info(`Payday! +$${this.moneyVal} = $${currMoney}`);
+    this.toastr.info(`${this.message} = ${currMoney}`);
   }
 
 }

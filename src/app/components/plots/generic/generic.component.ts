@@ -12,6 +12,7 @@ export class GenericComponent implements OnInit {
   @Input() width;
   selector: Object[] = [];
   selectedPlot: Object;
+  modifier: string;
 
   constructor(private staticDataService: StaticDataService, private randomizerService: RandomizerService) { }
 
@@ -23,6 +24,7 @@ export class GenericComponent implements OnInit {
         }
       }
       this.selectedPlot = this.selector[this.randomizerService.getRandomNum(0, this.selector.length - 1)];
+      this.modifier = this.selectedPlot['modifier'];
     });
   }
 

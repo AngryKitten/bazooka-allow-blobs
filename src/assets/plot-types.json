@@ -2,7 +2,20 @@
   {
     "type": "panel-static",
     "minWidth": 0,
-    "maxWidth": 50
+    "maxWidth": 50,
+    "modifier": "x0"
+  },
+  {
+    "type": "panel-static",
+    "minWidth": 0,
+    "maxWidth": 50,
+    "modifier": "x1"
+  },
+  {
+    "type": "panel-static",
+    "minWidth": 0,
+    "maxWidth": 50,
+    "modifier": "x2"
   },
   {
     "type": "panel-locked",

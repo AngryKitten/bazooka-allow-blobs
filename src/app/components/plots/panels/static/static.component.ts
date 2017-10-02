@@ -21,8 +21,16 @@ export class StaticComponent implements OnInit {
   }
 
   getMoney() {
-    this.toastr.info(`Payday! +$${this.moneyVal}`);
+    let currMoney;
     this.gotMoney = true;
+    if (localStorage.getItem('money')) {
+      currMoney = JSON.parse(localStorage.getItem('money')) + this.moneyVal;
+      localStorage.setItem('money', JSON.stringify(currMoney));
+    } else {
+      currMoney = this.moneyVal;
+      localStorage.setItem('money', JSON.stringify(this.moneyVal));
+    }
+    this.toastr.info(`Payday! +$${this.moneyVal} = $${currMoney}`);
   }
 
 }

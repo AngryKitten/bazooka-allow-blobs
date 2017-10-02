@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
+import { CustomOptions } from './toastr-config';
 
 import { AppComponent } from './app.component';
 import { PlotterComponent } from './components/plotter/plotter.component';
@@ -9,7 +13,11 @@ import { PlotterComponent } from './components/plotter/plotter.component';
 import { GenericComponent } from './components/plots/generic/generic.component';
 
 // services
-import { RandomizerService } from './services/randomizer.service';
+import { StaticDataService } from './services/static-data/static-data.service';
+import { RandomizerService } from './services/randomizer/randomizer.service';
+import { StaticComponent } from './components/plots/panels/static/static.component';
+import { LockedComponent } from './components/plots/panels/locked/locked.component';
+import { InfoComponent } from './components/plots/banners/info/info.component';
 
 // directives
 
@@ -17,13 +25,23 @@ import { RandomizerService } from './services/randomizer.service';
   declarations: [
     AppComponent,
     PlotterComponent,
-    GenericComponent
+    GenericComponent,
+    StaticComponent,
+    LockedComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
-    InfiniteScrollModule
+    BrowserAnimationsModule,
+    HttpModule,
+    InfiniteScrollModule,
+    ToastModule.forRoot()
   ],
-  providers: [RandomizerService],
+  providers: [
+    { provide: ToastOptions, useClass: CustomOptions },
+    StaticDataService,
+    RandomizerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

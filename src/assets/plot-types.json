@@ -1,0 +1,17 @@
+[
+  {
+    "type": "panel-static",
+    "minWidth": 0,
+    "maxWidth": 50
+  },
+  {
+    "type": "panel-locked",
+    "minWidth": 0,
+    "maxWidth": 50
+  },
+  {
+    "type": "banner-info",
+    "minWidth": 50,
+    "maxWidth": 100
+  }
+]

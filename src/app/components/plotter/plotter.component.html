@@ -1,5 +1,5 @@
 <div class="babs-grid">
-  <div *ngFor="let plot of plots; index as i" class="babs-col-{{plot.width}} babs-row-span-{{plot.rows}}">
-    <plot-generic [width]="plot.width"></plot-generic>
+  <div *ngFor="let width of widthArray" class="babs-col-{{width}}">
+    <plot-generic [width]="width"></plot-generic>
   </div>
 </div>

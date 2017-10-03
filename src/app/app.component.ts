@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  stripes: number[] = [0, 0, 0, 0, 0, 0];
+  constructor(private cdr: ChangeDetectorRef) { }
 
-  onScroll() {
-    this.stripes.push(0);
+  stripes: number[] = [];
+
+  ngOnInit() {
+    this.generatePlotters();
+  }
+
+  generatePlotters() {
+    this.stripes = [];
+    this.cdr.detectChanges();
+    this.stripes = [0, 0, 0, 0];
+  }
+
+  next() {
+    this.generatePlotters();
   }
 
 }

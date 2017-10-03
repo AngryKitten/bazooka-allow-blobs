@@ -38,7 +38,7 @@ $prefix: map-get($config, prefix);
     $column-compensation: map-get($config, gutter) * (map-get($config, num-columns) - 1) / map-get($config, num-columns);
   }
   display: grid;
-  grid-auto-rows: minmax(#{map-get($config, min-row-height)}px, auto);
+  grid-auto-rows: 25vh;
   grid-template-columns: repeat(map-get($config, num-columns), calc(100% / #{map-get($config, num-columns)} - #{$column-compensation}px));
   grid-row-gap: #{map-get($config, gutter)}px;
   grid-column-gap: #{map-get($config, gutter)}px;

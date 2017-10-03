@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ToastModule, ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { CustomOptions } from './toastr-config';
 
@@ -34,7 +33,6 @@ import { InfoComponent } from './components/plots/banners/info/info.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    InfiniteScrollModule,
     ToastModule.forRoot()
   ],
   providers: [

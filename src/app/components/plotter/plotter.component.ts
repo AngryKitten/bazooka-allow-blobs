@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomizerService } from '../../services/randomizer.service';
+import { RandomizerService } from '../../services/randomizer/randomizer.service';
 
 @Component({
   selector: 'app-plotter',
@@ -14,24 +14,20 @@ export class PlotterComponent implements OnInit {
   constructor(private randomizerService: RandomizerService) { }
 
   ngOnInit() {
-    this.numPlots = this.randomizerService.getRandomNum(1, 6);
-    let totalWidth, remainingWidth, minWidth;
-    // initialize columnwidths
-    while (this.widthArray.length < 2) {
-      this.widthArray = [];
-      totalWidth = 0;
-      remainingWidth = 100;
-      minWidth = 20;
-      while (remainingWidth > minWidth) { // generate random numbers adding up to 100
-        const newWidth = this.randomizerService.getRandomNum(minWidth, remainingWidth);
-        this.widthArray.push(newWidth);
-        remainingWidth -= newWidth;
-        totalWidth += newWidth;
-      }
+    this.numPlots = this.randomizerService.getRandomNum(1, 5);
+    let remainingWidth = 100;
+    const minWidth = 20;
+    const maxWidth = 100 / this.numPlots;
+    for (let i = 0; i < this.numPlots; i++) {
+      const newWidth = this.randomizerService.getRandomNum(minWidth, maxWidth);
+      remainingWidth -= newWidth;
+      this.widthArray.push(newWidth);
     }
-    // add any extra width to the last block
-    this.widthArray[this.widthArray.length - 1] += remainingWidth;
-    // shuffle, since the width generator doesn’t generate linearly distributed random numbers
+    if (remainingWidth >= 20) {
+      this.widthArray.push(remainingWidth);
+    } else {
+      this.widthArray[this.widthArray.length - 1] += remainingWidth;
+    }
     for (let i = this.widthArray.length; i; i--) {
       const j = Math.floor(Math.random() * i);
       [this.widthArray[i - 1], this.widthArray[j]] = [this.widthArray[j], this.widthArray[i - 1]];

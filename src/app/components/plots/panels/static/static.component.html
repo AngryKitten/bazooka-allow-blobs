@@ -1,0 +1,2 @@
+<button *ngIf="!gotMoney" (click)="getMoney()">Get Money</button>
+<div *ngIf="gotMoney">${{moneyVal}}</div>

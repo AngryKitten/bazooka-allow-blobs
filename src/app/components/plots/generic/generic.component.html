@@ -1,7 +1,11 @@
-<div class="outer">
-  <div class="content">
-    <div class="center">
-      {{width}}
-    </div>
+<div *ngIf="selectedPlot !== undefined" class="outer">
+  <div *ngIf="selectedPlot['type'] === 'panel-static'" class="content">
+    <plot-panel-static [modifier]="modifier" class="full"></plot-panel-static>
+  </div>
+  <div *ngIf="selectedPlot['type'] === 'panel-locked'" class="content">
+    <plot-panel-locked [modifier]="modifier" class="full"></plot-panel-locked>
+  </div>
+  <div *ngIf="selectedPlot['type'] === 'banner-info'" class="content">
+    <plot-banner-info [modifier]="modifier" class="full"></plot-banner-info>
   </div>
 </div>

@@ -1,16 +1,18 @@
 .outer {
   height: calc(100% - 10px);
   padding: 5px;
-}
-
-.content {
-  align-items: center;
-  background-color: lightcyan;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-}
-
-.center {
-  font-size: 24px;
+  .content {
+    align-items: center;
+    background-color: lightcyan;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    .full {
+      align-items: center;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      width: 100%;
+    }
+  }
 }
